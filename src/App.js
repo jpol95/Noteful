@@ -1,25 +1,49 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { Component } from "react";
+import { Route } from 'react-router-dom'
+import { render } from '@testing-library/react';
+import Header from './Header/Header'
+import FolderSection from './FolderSection/FolderSection'
+import NoteView from './NoteView/NoteView'
+import items from './dummy_store'
+import NoteSection from './NoteSection/NoteSection'
+import FolderSectionNV from './FolderSectionNV/FolderSectionNV'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+class App extends Component{
+  state={
+    folders: items.folders, notes: items.notes
+  }
+
+  render(){
+    return <>
+    <Header />
+    <Route exact path="/" 
+    render={props => {
+      return <main>
+      <FolderSection {...props} folders={this.state.folders}/>
+      <NoteSection {...props} notes={this.state.notes}/>
+      </main>
+    }} /> 
+    <Route exact path="/folder/:folderId" 
+    render={props => {
+      return <main>
+      <FolderSection {...props} folders={this.state.folders}/>
+      <NoteSection {...props} notes={this.state.notes}/>
+      </main>
+    }} />  
+    <Route exact path="/notes/:noteId" 
+    render={props => {
+      return <main>
+      <FolderSectionNV {...props} folders={this.state.folders}/>
+      <NoteView {...props} notes={this.state.notes}/>
+      </main>
+    }} />
+
+    </>
+  }
 }
-
 export default App;

@@ -1,0 +1,17 @@
+.folder-section, .note-section{
+    margin: 50px;
+}
+
+.folder-section{
+    flex: 1;
+}
+
+.folder, .note, .back-button{
+    border: 2px solid black;
+}
+
+.folder, .back-button{
+    padding: 10%;
+    text-align: center;
+    font-weight: bold;
+}
