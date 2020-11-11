@@ -10,6 +10,9 @@ html, body{
     text-align: center;
     font-weight: bold;
 }
+button{
+    background-color: white;
+}
 .note{
     display: flex;
     padding: 1% 7%;
@@ -33,3 +36,7 @@ html, body{
     justify-content: space-between  
 }
 
+.delete-button{
+    text-decoration: none;
+    color: black;
+}

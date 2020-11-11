@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import FolderItem from '../FolderItem/FolderItem'
 import './FolderSection.css'
+import NotefulContext from '../NotefulContext'
 
 export default class FolderSection extends React.Component {
     // if the match name === the folder name make that highlighted
+    static contextType = NotefulContext
   makeFolders() {
-    return this.props.folders.map((current, index) => {
+    return this.context.folders.map((current, index) => {
       return (
-        <FolderItem  match={this.props.match} history={this.props.history}  key={index} folderId={current.id} name={current.name} />
+        <FolderItem  key={index} folderId={current.id} name={current.name} />
       );
     });
   }
