@@ -13,7 +13,7 @@ export default class NoteView extends React.Component{
    return  <section className="note-section">
             <Note name={currentNote.name} noteId={currentNote.id} />
             <div className="note-contents">
-                <p>{currentNote.description}</p>
+                <p>{currentNote.content}</p>
             </div>
         </section>
     }

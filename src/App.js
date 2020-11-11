@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from "react";
 import { Route } from 'react-router-dom'
-import { render } from '@testing-library/react';
 import Header from './Header/Header'
 import FolderSection from './FolderSection/FolderSection'
 import NoteView from './NoteView/NoteView'
@@ -35,10 +33,10 @@ class App extends Component{
       <NoteSection {...props} notes={this.state.notes}/>
       </main>
     }} />  
-    <Route exact path="/notes/:noteId" 
+    <Route exact path="/note/:noteId" 
     render={props => {
       return <main>
-      <FolderSectionNV {...props} folders={this.state.folders}/>
+      <FolderSectionNV {...props} notes={this.state.notes} folders={this.state.folders}/>
       <NoteView {...props} notes={this.state.notes}/>
       </main>
     }} />
