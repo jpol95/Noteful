@@ -3,6 +3,7 @@ import Note from '../Note/Note'
 import './NoteSection.css'
 import NotefulContext from '../NotefulContext'
 import {Link} from 'react-router-dom'
+import NoteError from '../NoteError/NoteError'
 
 export default class NoteSection extends React.Component{
     static contextType = NotefulContext
@@ -10,7 +11,7 @@ export default class NoteSection extends React.Component{
         return this.context.notes.filter((current) =>{
             return current.folderId === this.props.match.params.folderId || this.props.match.params.folderId === undefined})
             .map((current, index) => { 
-            return <Note key={index} date={current.date} noteId={current.id} name={current.name} folderId={current.folderId}/>
+            return <NoteError key={index}><Note key={index} date={current.date} noteId={current.id} name={current.name} folderId={current.folderId}/></NoteError>
           
         })}
     

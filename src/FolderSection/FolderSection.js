@@ -3,6 +3,7 @@ import FolderItem from '../FolderItem/FolderItem'
 import './FolderSection.css'
 import NotefulContext from '../NotefulContext'
 import {Link} from 'react-router-dom'
+import FolderError from '../FolderError/FolderError'
 
 export default class FolderSection extends React.Component {
     // if the match name === the folder name make that highlighted
@@ -10,7 +11,7 @@ export default class FolderSection extends React.Component {
   makeFolders() {
     return this.context.folders.map((current, index) => {
       return (
-        <FolderItem  key={index} folderId={current.id} name={current.name} />
+        <FolderError key={index}><FolderItem  key={index} folderId={current.id} name={current.name} /></FolderError>
       );
     });
   }

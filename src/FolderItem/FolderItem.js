@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 export default class FolderItem extends React.Component{
     render(){
         FolderItem.propTypes = {
-            folderId:PropTypes.string.isRequired,
+            folderId: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
         }
         let URL = `/folder/${this.props.folderId}`

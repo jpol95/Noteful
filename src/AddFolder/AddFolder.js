@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddFolder.css'
 import NotefulContext from '../NotefulContext'
+import FormError from '../FormError/FormError'
 
 
 export default class AddFolder extends React.Component{
@@ -41,6 +42,7 @@ export default class AddFolder extends React.Component{
     }
     render(){
         return(
+            <FormError>
             <form class="folder-form" onSubmit ={e => this.handleSubmit(e)}>
                 <h2>Add a folder</h2>
                 <label htmlFor="folder-name">Folder Name (required)</label>
@@ -48,6 +50,7 @@ export default class AddFolder extends React.Component{
                 {this.state.touched && this.validateName()}
                 <button type="submit">Submit</button>
             </form>
+            </FormError>
         )
 
     }

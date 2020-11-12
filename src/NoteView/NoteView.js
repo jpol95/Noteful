@@ -2,6 +2,7 @@ import React from 'react'
 import Note from '../Note/Note'
 import './NoteView.css'
 import NotefulContext from '../NotefulContext'
+import NoteError from '../NoteError/NoteError'
 
 export default class NoteView extends React.Component{
     
@@ -13,7 +14,7 @@ static contextType = NotefulContext
     render(){
     let currentNote = this.getNote()
    return  <section className="note-section">
-            <Note name={currentNote.name} date={currentNote.date} noteId={currentNote.id} />
+            <NoteError><Note name={currentNote.name} date={currentNote.date} noteId={currentNote.id} /></NoteError>
             <div className="note-contents">
                 <p>{currentNote.content}</p>
             </div>

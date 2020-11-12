@@ -1,6 +1,7 @@
 import React from 'react'
 import NotefulContext from '../NotefulContext'
 import './AddNote.css'
+import FormError from '../FolderError/FolderError'
 
 export default class AddNote extends React.Component{
     state = {
@@ -71,6 +72,7 @@ export default class AddNote extends React.Component{
     render(){
         // console.log(this.state)
         return(
+            <FormError>
             <form className="add-note-button" onSubmit={(e) => this.handleSubmit(e)}>
             <h2>Create new note</h2>
             <label htmlFor="folder">Folder</label>
@@ -85,6 +87,7 @@ export default class AddNote extends React.Component{
             {this.state.content.touched && this.validateContent()}
             <button disabled={this.validateContent()||this.validateName()} type="submit">Submit</button>
             </form>
+            </FormError>
         )
     }
 }
