@@ -2,6 +2,7 @@ import React from 'react'
 import './Note.css'
 import { Link } from 'react-router-dom'
 import NotefulContext from '../NotefulContext'
+import PropTypes from 'prop-types'
 
 export default class Note extends React.Component{
     deleteNote(noteId, callback){
@@ -17,20 +18,22 @@ export default class Note extends React.Component{
             error.message = data.message
             return Promise.reject(error)
           }
-          if (this.props.history.location.pathname !== "/"){
-              console.log("hello")
-          this.props.history.push("/")}
-          callback(noteId)   
+          callback(noteId) 
           })
       }
       static contextType = NotefulContext;
     render(){
         // console.log(this.props)
+        Note.propTypes = {
+            noteId: PropTypes.number.isRequired || PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired
+        }
         return <Link to={`/note/${this.props.noteId}`} className="note">
                 <p className="title"> {this.props.name} </p>
                 <span className="bottom-elements">
-                    <p className="date">Date modified on...</p>
-                    <Link className="delete-button" onClick={() => this.deleteNote(this.props.noteId, this.context.deleteNote)}>Delete</Link>
+                    <p className="date">Created {this.props.date}.</p>
+                    <Link to="/" className="delete-button" onClick={() => this.deleteNote(this.props.noteId, this.context.deleteNote)}>Delete</Link>
                 </span>
                 </Link>
 

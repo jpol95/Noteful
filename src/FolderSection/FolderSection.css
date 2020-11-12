@@ -10,14 +10,33 @@ html, body{
 .add-folder, .add-note, .delete-button{
     cursor: pointer;
 }
-.folder:hover{
+.folder:hover, .add-folder:hover{
     cursor: pointer;
+    background-color: black;
+    color: white;
 }
-.add-folder{
+/* .add-folder{
     text-align: center;
     border: 2px solid black;
     margin: 10px;
     padding: 5% 20%;
     background-color: white;
     margin-left: 20%;
+    text-decoration: none;
+    color: black;
+} */
+
+.add-folder{
+    text-align: center;
+    border: 2px solid black;
+    width: 93%;
+    margin: 10px;
+    padding: 5% 0%;
+    /* padding: 5% 23%; */
+    display: inline-block;
+    background-color: white;
+    text-decoration: none;
+    color: black;
 }
+
+

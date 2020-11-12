@@ -14,9 +14,16 @@ html, body{
 }
 
 .add-note{
+    display: inline-block;
     padding:2% 5%;
     text-align: center;
     border: 2px solid black;
     width: 200px;
+    text-decoration: none;
+    color: black;
 }
 
+.add-note:hover{
+    background-color: black;
+    color: white;   
+}

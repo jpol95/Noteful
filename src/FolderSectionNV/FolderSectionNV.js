@@ -5,12 +5,14 @@ import NotefulContext from '../NotefulContext'
 export default class FolderSectionNV extends React.Component{
     static contextType = NotefulContext
     getFolderName(){
+        console.log(this.context)
       let folderId =  this.context.notes.find(current => {
-            return current.id === this.props.match.params.noteId
+            return current.id == this.props.match.params.noteId
         }).folderId
-        return this.context.folders.find(current => {
+        let folder =  this.context.folders.find(current => {
             return current.id === folderId
-        }).name
+        })
+        return folder.name
     }
     render(){
         let folderName = this.getFolderName()

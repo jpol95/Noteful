@@ -40,3 +40,12 @@ button{
     text-decoration: none;
     color: black;
 }
+
+.delete-button:hover{
+    background-color: black;
+    color: white;
+}
+
+.note:hover{
+    box-shadow: 5px 10px 18px #888888;
+}
