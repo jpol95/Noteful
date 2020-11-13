@@ -19,3 +19,7 @@ html, body{
 .folder, .note, .back-button{
     border: 2px solid black;
 }
+
+.folder{
+    min-width: 75px;
+}

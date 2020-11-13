@@ -4,6 +4,7 @@ html, body{
 }
 
 .folder-section{
+    margin: 5% 2% 0% 5%;
     flex: 1;
 }
 
@@ -39,4 +40,9 @@ html, body{
     color: black;
 }
 
+/* @media only screen and (max-width: 800px){
+    .folder-section{
+        margin: 5px;
+    }
+} */
 

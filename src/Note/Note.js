@@ -32,7 +32,7 @@ export default class Note extends React.Component{
         return <Link to={`/note/${this.props.noteId}`} className="note">
                 <p className="title"> {this.props.name} </p>
                 <span className="bottom-elements">
-                    <p className="date">Created {this.props.date}.</p>
+                    <p className="date">{this.props.date.substring(4,16)}</p>
                     <Link to="/" className="delete-button" onClick={() => this.deleteNote(this.props.noteId, this.context.deleteNote)}>Delete</Link>
                 </span>
                 </Link>

@@ -16,7 +16,7 @@ export default class FolderSectionNV extends React.Component{
     }
     render(){
         let folderName = this.getFolderName()
-        return <section className="folder-section">
+        return <section className="folder-sectionnv">
             <div onClick={() => this.props.history.goBack()} className="back-button">
                 Go back
             </div>

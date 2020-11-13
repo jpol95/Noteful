@@ -6,7 +6,7 @@ html, body{
 .note-section{
     flex: 3;
 }
-.folder-section, .note-section{
+.note-section{
     margin: 50px;
 }   
 .add-folder, .add-note, .delete-button{
