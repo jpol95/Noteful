@@ -17,8 +17,8 @@ export default class AddNote extends React.Component{
     handleSubmit(e){
         let error
         let dateObject = new Date()
-        let dateString = dateObject.toUTCString()
-        let newInput = JSON.stringify({name: this.state.name.value, folderId: this.state.folderId.value, content: this.state.content.value, date: dateString})
+        let dateString = dateObject.toISOString()
+        let newInput = JSON.stringify({name: this.state.name.value, folderId: this.state.folderId.value, content: this.state.content.value, modified: dateString})
         e.preventDefault()
         fetch(`http://localhost:9090/notes`, {method :'POST', headers : {"content-type" : "application/json"}, body: newInput}).then(
             res => {

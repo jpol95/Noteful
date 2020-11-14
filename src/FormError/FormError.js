@@ -1,10 +1,11 @@
 import React from 'react'
 
 export default class FormError extends React.Component{
-    component(props){
-        this.state = {
-            hasError: false
-        }
+    constructor(props){
+        super(props)
+    }
+    state = {
+        hasError: false
     }
     static getDerivedStateFromError(error){
         return {hasError : true}

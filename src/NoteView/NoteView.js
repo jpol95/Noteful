@@ -14,7 +14,7 @@ static contextType = NotefulContext
     render(){
     let currentNote = this.getNote()
    return  <section className="note-section">
-            <NoteError><Note name={currentNote.name} date={currentNote.date} noteId={currentNote.id} /></NoteError>
+            <NoteError><Note name={currentNote.name} modified={currentNote.modified} noteId={currentNote.id} /></NoteError>
             <div className="note-contents">
                 <p>{currentNote.content}</p>
             </div>

@@ -42,3 +42,12 @@ button:disabled{
     margin: auto;
     color: red;
 }
+
+@media only screen and (max-width: 800px){
+    textarea{
+        width: 40%;
+    }
+    input{
+        border: 1px solid black;
+    }
+}

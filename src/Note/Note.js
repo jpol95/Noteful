@@ -27,12 +27,13 @@ export default class Note extends React.Component{
         Note.propTypes = {
             noteId: PropTypes.number.isRequired || PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            date: PropTypes.string.isRequired
+            modified: PropTypes.string.isRequired
         }
+        console.log(this.props)
         return <Link to={`/note/${this.props.noteId}`} className="note">
                 <p className="title"> {this.props.name} </p>
                 <span className="bottom-elements">
-                    <p className="date">{this.props.date.substring(4,16)}</p>
+                    <p className="date">Modified {this.props.modified.substring(0,10)}</p>
                     <Link to="/" className="delete-button" onClick={() => this.deleteNote(this.props.noteId, this.context.deleteNote)}>Delete</Link>
                 </span>
                 </Link>
