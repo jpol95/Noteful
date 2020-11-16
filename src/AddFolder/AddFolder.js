@@ -8,7 +8,8 @@ export default class AddFolder extends React.Component{
     static contextType = NotefulContext
 
     state = {
-        name: {value: '', touched : false}
+        name: {value: '', touched : false}, 
+        errorString: '',
     }
 
     handleSubmit(e){
@@ -16,19 +17,19 @@ export default class AddFolder extends React.Component{
         e.preventDefault()
         let newFolder = JSON.stringify({name : this.state.name.value})
         fetch(`http://localhost:9090/folders/`, {method: 'POST', headers: {"content-type": "application/json"}, body: newFolder })
-        .then(res =>{
-           if (!res.ok){
-               error = {code: res.status}
-           } 
-              return res.json()
-            
-        }).then(data =>{
-            if (error) {
-                error.message = data.message
-                Promise.reject(error)
-            }
+        .then(res =>{ 
+            if(!res.ok) {
+                console.log('An error occurred');
+                throw new Error('Something went wrong'); // throw an error
+              }
+               return res.json()
+             
+         }).then(data =>{
             this.context.addFolder(data)
             this.props.history.push("/")
+        }).catch(error => {
+            console.log("hello")
+            this.setState({...this.state, errorString: error.message})
         })
     }
     handleUpdateName = (name) => {
@@ -40,6 +41,7 @@ export default class AddFolder extends React.Component{
         if (this.state.name.value.length < 3) return <p className="error">Folder Name must be at last 3 letters</p>
     }
     render(){
+        if (this.state.errorString) throw new Error("Unable to create folder. Please try again later")
         return(
             <FormError>
             <form className="folder-form" onSubmit ={e => this.handleSubmit(e)}>

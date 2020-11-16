@@ -7,7 +7,8 @@ export default class AddNote extends React.Component{
     state = {
         name: {value:'', touched: false}, 
         folderId: {value: this.context.folders[0] != undefined ? this.context.folders[0].id : '', touched: false}, 
-        content: {value:'', touched: false}
+        content: {value:'', touched: false}, 
+        errorString:''
     }
 
     static contextType = NotefulContext
@@ -22,16 +23,16 @@ export default class AddNote extends React.Component{
         e.preventDefault()
         fetch(`http://localhost:9090/notes`, {method :'POST', headers : {"content-type" : "application/json"}, body: newInput}).then(
             res => {
-                if (!res.ok) error = {code: res.status}
+                if (!res.ok){
+                    throw new Error('Something went wrong, please try again later.')
+            }
                 return res.json()
             }
         ).then(data =>{
-            if (error){
-                error.message = data.message
-                return Promise.reject(error)
-            }
             this.context.addNote(data)
             this.props.history.push("/")
+        }).catch(error => {
+            this.setState({...this.state, errorString: error.message})
         })
     }
 
@@ -69,9 +70,9 @@ export default class AddNote extends React.Component{
     }
 
     render(){
-        // console.log(this.state)
+        if (this.state.errorString) throw new Error("Unable to submit form. Please try again later.")
         return(
-            <FormError>
+
             <form className="add-note-button" onSubmit={(e) => this.handleSubmit(e)}>
             <h2>Create new note</h2>
             <label htmlFor="folder">Folder</label>
@@ -84,9 +85,10 @@ export default class AddNote extends React.Component{
             <label htmlFor="content">Content</label>
             <textarea onChange = {(e) => this.handleContentChange(e.target.value)} placeholder="Please write note here..." className="content" id="content"></textarea>
             {this.state.content.touched && this.validateContent()}
-            <button class="submit" disabled={this.validateContent()||this.validateName()} type="submit">Submit</button>
+            <button className="submit" disabled={this.validateContent()||this.validateName()} type="submit">Submit</button>
+            <p className="error">{this.state.errorString}</p>
             </form>
-            </FormError>
+           
         )
     }
 }

@@ -1,19 +1,20 @@
 import React from 'react'
 
-export default class NoteError extends React.Component{
+export default class FolderLoadError extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            hasError: false
+            hasError: false, 
+            errorString: ''
         }
     }
     static getDerivedStateFromError(error){
-        return {hasError:true}
+        return {hasError:true, errorString: error}
     }
 
     render(){
         if (this.state.hasError){
-            return <h2>An Error has occurred with this note. Please try again later.</h2>
+            return <h2 class="folder-section">{this.state.errorString.toString()}</h2>
         }
         return this.props.children
     }

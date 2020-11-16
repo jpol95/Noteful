@@ -17,6 +17,7 @@ export default class FolderSection extends React.Component {
   }
 
   render() {
+    if (this.context.folderLoadError) throw new Error("Unable to load folders. Please try again later")
     return <section className="folder-section">
         {this.makeFolders()}
         <Link to="/add-folder" className="add-folder">

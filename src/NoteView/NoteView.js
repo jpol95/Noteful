@@ -2,7 +2,7 @@ import React from 'react'
 import Note from '../Note/Note'
 import './NoteView.css'
 import NotefulContext from '../NotefulContext'
-import NoteError from '../NoteError/NoteError'
+import NoteError from '../NoteLoadError/NoteLoadError'
 
 export default class NoteView extends React.Component{
     

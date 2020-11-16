@@ -9,12 +9,16 @@ import FolderSectionNV from "./FolderSectionNV/FolderSectionNV";
 import NotefulContext from "./NotefulContext";
 import AddFolder from "./AddFolder/AddFolder";
 import AddNote from "./AddNote/AddNote";
+import FormError from './FormError/FormError'
+import FolderLoadError from './FolderLoadError/FolderLoadError'
+import NoteLoadError from './NoteLoadError/NoteLoadError'
 // import items from './dummy_store'
 
 class App extends Component {
   state = {
     folders: [],
     notes: [],
+    loadError: false,
   };
 
   deleteNote = (noteId) => {
@@ -46,6 +50,8 @@ class App extends Component {
           return Promise.reject(error);
         }
         this.setState({ ...this.state, folders: data });
+      }).catch(error=>{
+        this.setState({...this.state, folderLoadError: true})
       });
     fetch(`http://localhost:9090/notes`)
       .then((res) => {
@@ -56,7 +62,9 @@ class App extends Component {
         if (error) return Promise.reject(error);
         let newState = { ...this.state, notes: data };
         this.setState(newState);
-      });
+      }).catch(error=>{
+        this.setState({...this.state, noteLoadError: true})
+      })
   }
 
   // componentDidUpdate(){
@@ -74,6 +82,8 @@ class App extends Component {
         value={{
           folders: this.state.folders,
           notes: this.state.notes,
+          noteLoadError: this.state.noteLoadError,
+          folderLoadError: this.state.folderLoadError,
           deleteNote: this.deleteNote,
           addFolder: this.addFolder,
           addNote: this.addNote,
@@ -82,16 +92,16 @@ class App extends Component {
         <>
           <Header />
           <main>
-            <Route exact path="/" component={FolderSection} />
-            <Route exact path="/" component={NoteSection} />
+            <Route exact path="/" ><FolderLoadError><FolderSection/></FolderLoadError></Route> 
+            <Route exact path="/" ><NoteLoadError><NoteSection/></NoteLoadError></Route>
             <Route exact path="/folder/:folderId" component={FolderSection} />
             <Route exact path="/folder/:folderId" component={NoteSection} />
             <Route exact path="/note/:noteId" component={FolderSectionNV} />
             <Route exact path="/note/:noteId" component={NoteView} />
             <Route exact path="/add-folder" component={FolderSection} />
-            <Route exact path="/add-folder" component={AddFolder} />
+            <Route exact path="/add-folder"><FormError><AddFolder/></FormError></Route>
             <Route exact path="/add-note" component={FolderSection} />
-            <Route exact path="/add-note" component={AddNote} />
+            <Route exact path="/add-note"><FormError><AddNote/></FormError></Route>
           </main>
         </>
       </NotefulContext.Provider>
