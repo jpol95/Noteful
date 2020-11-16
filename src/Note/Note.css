@@ -22,11 +22,16 @@ button{
     text-decoration: none;
     color: black;
 }   
-.note .delete-button{
+.note-container{
+    position: relative;
+}
+.delete-button{
+    position: absolute;
     border: 2px solid black;
     height: 20px;
     width: 100px;
-    margin-top: 10px;
+    top: 60%;
+    left: 80%;
     padding-bottom: 5px;
     text-align: center;
 }

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 
 export default class Note extends React.Component{
     deleteNote(noteId, callback){
+      window.open("/")
         let error
         fetch(`http://localhost:9090/notes/${noteId}`, {method: 'DELETE', headers: {
             'content-type': 'application/json'
@@ -33,9 +34,10 @@ export default class Note extends React.Component{
                 <p className="title"> {this.props.name} </p>
                 <span className="bottom-elements">
                     <p className="date">Modified {this.props.modified.substring(0,10)}</p>
-                    <Link to="/" className="delete-button" onClick={() => this.deleteNote(this.props.noteId, this.context.deleteNote)}>Delete</Link>
+                    <button className="delete-button" onClick={() => this.deleteNote(this.props.noteId, this.context.deleteNote)}>Delete</button>
                 </span>
                 </Link>
+            
 
     }
 }
