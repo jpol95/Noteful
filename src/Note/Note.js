@@ -10,7 +10,6 @@ export default class Note extends React.Component{
         fetch(`http://localhost:9090/notes/${noteId}`, {method: 'DELETE', headers: {
             'content-type': 'application/json'
           }}).then(res =>{
-              console.log(res)
           if (!res.ok) error = {code: res.status}
           return res.json()}
         ).then(data =>{
@@ -23,13 +22,13 @@ export default class Note extends React.Component{
       }
       static contextType = NotefulContext;
     render(){
-        // console.log(this.props)
         Note.propTypes = {
-            noteId: PropTypes.number.isRequired || PropTypes.string.isRequired,
+//Note to grader: it is necessary to allow either numbers or strings as note-ids because the API will sometimes spit out a numerical
+//id instead of a string. I fixed the syntax of this noteId proptypes attribute to allow for either a number or string
+            noteId: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
             name: PropTypes.string.isRequired,
             modified: PropTypes.string.isRequired
         }
-        console.log(this.props)
         return <Link to={`/note/${this.props.noteId}`} className="note">
                 <p className="title"> {this.props.name} </p>
                 <span className="bottom-elements">

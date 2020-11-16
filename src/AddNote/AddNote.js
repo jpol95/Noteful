@@ -6,7 +6,7 @@ import FormError from '../FolderError/FolderError'
 export default class AddNote extends React.Component{
     state = {
         name: {value:'', touched: false}, 
-        folderId: {value: this.context.folders[0].id, touched: false}, 
+        folderId: {value: this.context.folders[0] != undefined ? this.context.folders[0].id : '', touched: false}, 
         content: {value:'', touched: false}
     }
 
@@ -26,7 +26,6 @@ export default class AddNote extends React.Component{
                 return res.json()
             }
         ).then(data =>{
-            console.log(data)
             if (error){
                 error.message = data.message
                 return Promise.reject(error)

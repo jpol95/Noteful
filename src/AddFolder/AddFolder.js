@@ -14,7 +14,6 @@ export default class AddFolder extends React.Component{
     handleSubmit(e){
         let error
         e.preventDefault()
-        console.log(JSON.stringify(this.state.name.value))
         let newFolder = JSON.stringify({name : this.state.name.value})
         fetch(`http://localhost:9090/folders/`, {method: 'POST', headers: {"content-type": "application/json"}, body: newFolder })
         .then(res =>{
@@ -43,7 +42,7 @@ export default class AddFolder extends React.Component{
     render(){
         return(
             <FormError>
-            <form class="folder-form" onSubmit ={e => this.handleSubmit(e)}>
+            <form className="folder-form" onSubmit ={e => this.handleSubmit(e)}>
                 <h2>Add a folder</h2>
                 <label htmlFor="folder-name">Folder Name (required)</label>
                 <input id="folder-name" className="folder-name" type="text" onChange={(e) => this.handleUpdateName(e.target.value)}/>

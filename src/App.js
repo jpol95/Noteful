@@ -34,7 +34,6 @@ class App extends Component {
     this.setState({ ...this.state, notes });
   };
   getNotesAndFolders() {
-    console.log("Am I mounting");
     let error;
     fetch(`http://localhost:9090/folders`)
       .then((res) => {
@@ -54,7 +53,6 @@ class App extends Component {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         if (error) return Promise.reject(error);
         let newState = { ...this.state, notes: data };
         this.setState(newState);
@@ -71,7 +69,6 @@ class App extends Component {
 
   component;
   render() {
-    console.log(this.state.notes)
     return (
       <NotefulContext.Provider
         value={{
