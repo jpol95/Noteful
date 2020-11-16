@@ -35,9 +35,9 @@ export default class AddFolder extends React.Component{
         let newName = {value: name, touched: true}
         this.setState({...this.state, name:newName})
     }
-    validateName = (name) => {
-        if (name === '') return "Name is required"
-        if (name.length() < 3) return "Folder Name must be at last 3 letters"
+    validateName = () => {
+        if (this.state.name.value === '') return <p className="error">Name is required</p>
+        if (this.state.name.value.length < 3) return <p className="error">Folder Name must be at last 3 letters</p>
     }
     render(){
         return(
@@ -46,8 +46,8 @@ export default class AddFolder extends React.Component{
                 <h2>Add a folder</h2>
                 <label htmlFor="folder-name">Folder Name (required)</label>
                 <input id="folder-name" className="folder-name" type="text" onChange={(e) => this.handleUpdateName(e.target.value)}/>
-                {this.state.touched && this.validateName()}
-                <button type="submit">Submit</button>
+                {this.state.name.touched && this.validateName()}
+                <button disabled={this.validateName()} className="submit" type="submit">Submit</button>
             </form>
             </FormError>
         )

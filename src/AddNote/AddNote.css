@@ -1,5 +1,5 @@
 
-input, textarea,label, select, button{
+input, textarea,label, select, .submit{
     display: block;
     margin: auto;
 }
@@ -34,14 +34,16 @@ color: white;
 button:disabled{
     color: grey;
     background-color: white;
+    cursor: default;
 }
 
-.error{
+.error{    
     text-align: center;
     display: block;
     margin: auto;
     color: red;
 }
+
 
 @media only screen and (max-width: 800px){
     textarea{

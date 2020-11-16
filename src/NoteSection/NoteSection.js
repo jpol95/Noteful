@@ -11,7 +11,7 @@ export default class NoteSection extends React.Component{
         return this.context.notes.filter((current) =>{
             return current.folderId === this.props.match.params.folderId || this.props.match.params.folderId === undefined})
             .map((current, index) => { 
-            return <NoteError key={index}><Note key={index} modified={current.modified} noteId={current.id} name={current.name} folderId={current.folderId}/></NoteError>
+            return <NoteError key={index}><Note key={index} history={this.props.history} modified={current.modified} noteId={current.id} name={current.name} folderId={current.folderId}/></NoteError>
           
         })}
     

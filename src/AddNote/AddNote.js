@@ -84,7 +84,7 @@ export default class AddNote extends React.Component{
             <label htmlFor="content">Content</label>
             <textarea onChange = {(e) => this.handleContentChange(e.target.value)} placeholder="Please write note here..." className="content" id="content"></textarea>
             {this.state.content.touched && this.validateContent()}
-            <button disabled={this.validateContent()||this.validateName()} type="submit">Submit</button>
+            <button class="submit" disabled={this.validateContent()||this.validateName()} type="submit">Submit</button>
             </form>
             </FormError>
         )
