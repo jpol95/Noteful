@@ -19,7 +19,6 @@ export default class AddFolder extends React.Component{
         fetch(`http://localhost:9090/folders/`, {method: 'POST', headers: {"content-type": "application/json"}, body: newFolder })
         .then(res =>{ 
             if(!res.ok) {
-                console.log('An error occurred');
                 throw new Error('Something went wrong'); // throw an error
               }
                return res.json()
@@ -28,7 +27,6 @@ export default class AddFolder extends React.Component{
             this.context.addFolder(data)
             this.props.history.push("/")
         }).catch(error => {
-            console.log("hello")
             this.setState({...this.state, errorString: error.message})
         })
     }
