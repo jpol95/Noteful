@@ -17,7 +17,7 @@ export default class Note extends React.Component{
             error.message = data.message
             return Promise.reject(error)
           }
-          if (this.props.history.location.pathName != "/") this.props.history.push("/")
+          if (this.props.history.location.pathName !== "/") this.props.history.push("/")
           callback(noteId) 
           })
       }

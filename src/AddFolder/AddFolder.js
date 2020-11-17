@@ -1,7 +1,6 @@
 import React from 'react'
 import './AddFolder.css'
 import NotefulContext from '../NotefulContext'
-import FormError from '../FormError/FormError'
 
 
 export default class AddFolder extends React.Component{
@@ -13,7 +12,6 @@ export default class AddFolder extends React.Component{
     }
 
     handleSubmit(e){
-        let error
         e.preventDefault()
         let newFolder = JSON.stringify({name : this.state.name.value})
         fetch(`http://localhost:9090/folders/`, {method: 'POST', headers: {"content-type": "application/json"}, body: newFolder })

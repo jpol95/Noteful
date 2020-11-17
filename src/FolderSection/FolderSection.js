@@ -1,13 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import FolderItem from '../FolderItem/FolderItem'
 import './FolderSection.css'
 import NotefulContext from '../NotefulContext'
 import {Link} from 'react-router-dom'
-import FolderError from '../FolderError/FolderError'
-import FolderLoadError from "../FolderLoadError/FolderLoadError";
 
 export default class FolderSection extends React.Component {
-    // if the match name === the folder name make that highlighted
     static contextType = NotefulContext
   makeFolders() {
     return this.context.folders.map((current, index) => {

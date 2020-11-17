@@ -8,7 +8,7 @@ export default class NoteView extends React.Component{
     
 static contextType = NotefulContext
     getNote(){
-       return this.context.notes.find(current => current.id == this.props.match.params.noteId)
+       return this.context.notes.find(current => current.id === this.props.match.params.noteId.toString())
     }
 
     render(){

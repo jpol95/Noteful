@@ -6,7 +6,7 @@ import FormError from '../FolderError/FolderError'
 export default class AddNote extends React.Component{
     state = {
         name: {value:'', touched: false}, 
-        folderId: {value: this.context.folders[0] != undefined ? this.context.folders[0].id : '', touched: false}, 
+        folderId: {value: this.context.folders[0] !== undefined ? this.context.folders[0].id : '', touched: false}, 
         content: {value:'', touched: false}, 
         errorString:''
     }
@@ -16,7 +16,6 @@ export default class AddNote extends React.Component{
 
 
     handleSubmit(e){
-        let error
         let dateObject = new Date()
         let dateString = dateObject.toISOString()
         let newInput = JSON.stringify({name: this.state.name.value, folderId: this.state.folderId.value, content: this.state.content.value, modified: dateString})

@@ -1,9 +1,6 @@
 import React from 'react'
 
 export default class FormError extends React.Component{
-    constructor(props){
-        super(props)
-    }
     state = {
         hasError: false, 
         errorString:''

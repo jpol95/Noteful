@@ -6,7 +6,7 @@ export default class FolderSectionNV extends React.Component{
     static contextType = NotefulContext
     getFolderName(){
       let folderId =  this.context.notes.find(current => {
-            return current.id == this.props.match.params.noteId
+            return current.id === this.props.match.params.noteId.toString()
         }).folderId
         let folder =  this.context.folders.find(current => {
             return current.id === folderId
