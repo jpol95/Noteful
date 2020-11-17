@@ -13,6 +13,7 @@ html, body{
 button{
     background-color: white;
 }
+
 .note{
     display: flex;
     padding: 1% 7%;
@@ -43,6 +44,10 @@ button{
 .delete-button{
     text-decoration: none;
     color: black;
+}
+
+.delete-button:focus{
+    border:3px solid black;
 }
 
 .delete-button:hover{
