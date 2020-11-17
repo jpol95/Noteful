@@ -72,7 +72,7 @@ export default class AddNote extends React.Component{
     render(){
         if (this.state.errorString) throw new Error("Unable to submit form. Please try again later.")
         return(
-
+            <FormError>
             <form className="add-note-button" onSubmit={(e) => this.handleSubmit(e)}>
             <h2>Create new note</h2>
             <label htmlFor="folder">Folder</label>
@@ -88,7 +88,7 @@ export default class AddNote extends React.Component{
             <button className="submit" disabled={this.validateContent()||this.validateName()} type="submit">Submit</button>
             <p className="error">{this.state.errorString}</p>
             </form>
-           
+            </FormError>
         )
     }
 }

@@ -43,7 +43,6 @@ export default class AddFolder extends React.Component{
     render(){
         if (this.state.errorString) throw new Error("Unable to create folder. Please try again later")
         return(
-            <FormError>
             <form className="folder-form" onSubmit ={e => this.handleSubmit(e)}>
                 <h2>Add a folder</h2>
                 <label htmlFor="folder-name">Folder Name (required)</label>
@@ -51,7 +50,7 @@ export default class AddFolder extends React.Component{
                 {this.state.name.touched && this.validateName()}
                 <button disabled={this.validateName()} className="submit" type="submit">Submit</button>
             </form>
-            </FormError>
+          
         )
 
     }

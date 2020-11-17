@@ -92,16 +92,16 @@ class App extends Component {
         <>
           <Header />
           <main>
-            <Route exact path="/" ><FolderLoadError><FolderSection/></FolderLoadError></Route> 
-            <Route exact path="/" ><NoteLoadError><NoteSection/></NoteLoadError></Route>
+            <Route exact path="/" render={(props) => <FolderLoadError><FolderSection {...props} /></FolderLoadError>} />
+            <Route exact path="/" render={(props) => <NoteLoadError><NoteSection {...props} /></NoteLoadError>} />
             <Route exact path="/folder/:folderId" component={FolderSection} />
             <Route exact path="/folder/:folderId" component={NoteSection} />
             <Route exact path="/note/:noteId" component={FolderSectionNV} />
             <Route exact path="/note/:noteId" component={NoteView} />
             <Route exact path="/add-folder" component={FolderSection} />
-            <Route exact path="/add-folder"><FormError><AddFolder/></FormError></Route>
+            <Route exact path="/add-folder" render={(props) => <FormError><AddFolder {...props} /></FormError>} />
             <Route exact path="/add-note" component={FolderSection} />
-            <Route exact path="/add-note"><FormError><AddNote/></FormError></Route>
+            <Route exact path="/add-note" render={(props) => <FormError><AddNote {...props} /></FormError>} />
           </main>
         </>
       </NotefulContext.Provider>

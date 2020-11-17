@@ -3,7 +3,7 @@ import Note from "../Note/Note";
 import "./NoteSection.css";
 import NotefulContext from "../NotefulContext";
 import { Link } from "react-router-dom";
-import NoteError from "../NoteLoadError/NoteLoadError";
+import NoteLoadError from "../NoteLoadError/NoteLoadError";
 
 export default class NoteSection extends React.Component {
   static contextType = NotefulContext;
@@ -39,5 +39,6 @@ export default class NoteSection extends React.Component {
           </Link>
         </section>
     );
+
   }
 }

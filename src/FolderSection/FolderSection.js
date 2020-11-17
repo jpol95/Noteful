@@ -4,6 +4,7 @@ import './FolderSection.css'
 import NotefulContext from '../NotefulContext'
 import {Link} from 'react-router-dom'
 import FolderError from '../FolderError/FolderError'
+import FolderLoadError from "../FolderLoadError/FolderLoadError";
 
 export default class FolderSection extends React.Component {
     // if the match name === the folder name make that highlighted
@@ -11,18 +12,19 @@ export default class FolderSection extends React.Component {
   makeFolders() {
     return this.context.folders.map((current, index) => {
       return (
-        <FolderError key={index}><FolderItem  key={index} folderId={current.id} name={current.name} /></FolderError>
+        <FolderItem  key={index} folderId={current.id} name={current.name} />
       );
     });
   }
 
   render() {
     if (this.context.folderLoadError) throw new Error("Unable to load folders. Please try again later")
-    return <section className="folder-section">
+    return (
+    <section className="folder-section">
         {this.makeFolders()}
         <Link to="/add-folder" className="add-folder">
           Add Folder       
         </Link>
-        </section>;
-  }
+        </section>
+    )}
 }
