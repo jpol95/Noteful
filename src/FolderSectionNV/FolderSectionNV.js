@@ -7,7 +7,8 @@ export default class FolderSectionNV extends React.Component{
     getFolderName(){
         console.log(this.context)
       let folderId =  this.context.notes.find(current => {
-            return current.id === this.props.match.params.noteId
+          console.log(typeof this.props.match.params.noteId)
+            return current.id === Number(this.props.match.params.noteId)
         }).folderId
         let folder =  this.context.folders.find(current => {
             return current.id === folderId

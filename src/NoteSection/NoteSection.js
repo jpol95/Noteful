@@ -10,7 +10,7 @@ export default class NoteSection extends React.Component {
     return this.context.notes
       .filter((current) => {
         return (
-          current.folderId === this.props.match.params.folderId ||
+          current.folderId === Number(this.props.match.params.folderId) ||
           this.props.match.params.folderId === undefined
         );
       })

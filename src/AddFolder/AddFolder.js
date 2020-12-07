@@ -1,6 +1,7 @@
 import React from 'react'
 import './AddFolder.css'
 import NotefulContext from '../NotefulContext'
+import config from '../config'
 
 
 export default class AddFolder extends React.Component{
@@ -14,7 +15,7 @@ export default class AddFolder extends React.Component{
     handleSubmit(e){
         e.preventDefault()
         let newFolder = JSON.stringify({name : this.state.name.value})
-        fetch(`http://localhost:9090/folders/`, {method: 'POST', headers: {"content-type": "application/json"}, body: newFolder })
+        fetch(`http://localhost:8000/api/folders/`, {method: 'POST', headers: {"content-type": "application/json", "Authorization": `Bearer ${config.API_TOKEN}`}, body: newFolder })
         .then(res =>{ 
             if(!res.ok) {
                 throw new Error('Something went wrong'); // throw an error

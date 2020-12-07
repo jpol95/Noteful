@@ -12,6 +12,7 @@ import AddNote from "./AddNote/AddNote";
 import FormError from './FormError/FormError'
 import FolderLoadError from './FolderLoadError/FolderLoadError'
 import NoteLoadError from './NoteLoadError/NoteLoadError'
+import config from './config'
 // import items from './dummy_store'
 
 class App extends Component {
@@ -39,7 +40,7 @@ class App extends Component {
   };
   getNotesAndFolders() {
     let error;
-    fetch(`http://localhost:9090/folders`)
+    fetch(`http://localhost:8000/api/folders`, {headers: {Authorization: `Bearer ${config.API_TOKEN}`}})
       .then((res) => {
         if (!res.ok) error = { code: res.status };
         return res.json();
@@ -53,7 +54,7 @@ class App extends Component {
       }).catch(error=>{
         this.setState({...this.state, folderLoadError: true})
       });
-    fetch(`http://localhost:9090/notes`)
+    fetch(`http://localhost:8000/api/notes`, {headers: {Authorization: `Bearer ${config.API_TOKEN}`}})
       .then((res) => {
         if (!res.ok) error = { code: res.status };
         return res.json();
@@ -72,6 +73,7 @@ class App extends Component {
   // }
 
   componentDidMount() {
+    console.log(config)
     console.log(this.state)
     this.getNotesAndFolders();
   }

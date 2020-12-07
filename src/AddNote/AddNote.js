@@ -2,6 +2,7 @@ import React from 'react'
 import NotefulContext from '../NotefulContext'
 import './AddNote.css'
 import FormError from '../FolderError/FolderError'
+import config from '../config'
 
 export default class AddNote extends React.Component{
     state = {
@@ -20,7 +21,7 @@ export default class AddNote extends React.Component{
         let dateString = dateObject.toISOString()
         let newInput = JSON.stringify({name: this.state.name.value, folderId: this.state.folderId.value, content: this.state.content.value, modified: dateString})
         e.preventDefault()
-        fetch(`http://localhost:9090/notes`, {method :'POST', headers : {"content-type" : "application/json"}, body: newInput}).then(
+        fetch(`http://localhost:8000/api/notes`, {method :'POST', headers : {"content-type" : "application/json", "Authorization": `Bearer ${config.API_TOKEN}`}, body: newInput}).then(
             res => {
                 if (!res.ok){
                     throw new Error('Something went wrong, please try again later.')

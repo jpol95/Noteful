@@ -3,15 +3,17 @@ import './Note.css'
 import { Link } from 'react-router-dom'
 import NotefulContext from '../NotefulContext'
 import PropTypes from 'prop-types'
+import config from '../config'
 
 export default class Note extends React.Component{
     deleteNote(noteId, callback){
         let error
-        fetch(`http://localhost:9090/notes/${noteId}`, {method: 'DELETE', headers: {
-            'content-type': 'application/json'
+        fetch(`http://localhost:8000/api/notes/${noteId}`, {method: 'DELETE', headers: {
+            'content-type': 'application/json',
+            "Authorization": `Bearer ${config.API_TOKEN}`
           }}).then(res =>{
           if (!res.ok) error = {code: res.status}
-          return res.json()}
+          return res}
         ).then(data =>{
           if (error) {
             error.message = data.message
